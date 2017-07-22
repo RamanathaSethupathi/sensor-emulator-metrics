@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation=
+   "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- configure rule  -->
+    <bean id="underWtRule"
+          class="com.egen.sensor.rule.UnderWeightRule" scope="prototype"/>
+    <bean id="overWtRule"
+          class="com.egen.sensor.rule.OverWeightRule" scope="prototype"/>
+
+    <!-- configure rules engine -->
+    <bean id="rulesEngine"
+          class="org.easyrules.spring.RulesEngineFactoryBean">
+        <property name="rules">
+            <list>
+                <ref bean="underWtRule"/>
+                <ref bean="overWtRule"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
